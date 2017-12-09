@@ -7,25 +7,11 @@
         private $connection;
 
         public function getConnection(){
-            $this->connection = new mysqli($servername, $username, $password, $dbname);
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+            $this->connection = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+            if ($this->connection->connect_error) {
+                die("Connection failed: " . $this->connection->connect_error);
             }
             return $this->connection;
         }
     }
-// // echo "Connected successfully";
-
-// $nome = "cecilia";
-// $sql = "INSERT INTO tasks (nome_task, descricao)
-// VALUES ('$nome', 'Doe demais da conta sô')";
-
-// if ($conn->query($sql) === TRUE) {
-//     echo "New record created successfully";
-// } else {
-//     echo "Error: " . $sql . "<br>" . $conn->error;
-// }
-
-// $conn->close();
-
 ?>
