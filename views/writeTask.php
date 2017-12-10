@@ -6,6 +6,7 @@
 
     session_start();
     if( !isset($_SESSION['userId']) ){
+        http_response_code(301);
         header("Location: ../views/login.php");
     }
 

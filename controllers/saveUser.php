@@ -19,8 +19,10 @@
     
         $objQuery->insertUser($user);
 
+        http_response_code(301);
         header("Location: ../views/statusRecordUser.php?success=1");
     }else{
+        http_response_code(301);
         header("Location: ../views/statusRecordUser.php?success=0");
     }
 ?>

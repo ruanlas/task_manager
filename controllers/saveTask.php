@@ -27,7 +27,9 @@
 
         $objQuery->updateTask($task);
         //incluir mensagem informando o sucesso
-        header("Location: ../views/listTask.php");
+        http_response_code(301);
+        // header("Location: ../views/listTask.php");
+        header("Location: ../views/taskSalva.php?edit=1");
     }else{
         $task->setNome($nome);
         $task->setDescricao($descricao);
@@ -35,7 +37,9 @@
         $task->setUserId($idUser);
 
         $objQuery->insertTask($task);
-        //mandar para um controle perguntando se deseja inserir mais e informar que foi salvo.....
-        header("Location: ../views/dashboard.php");
+        
+        http_response_code(301);
+        // header("Location: ../views/dashboard.php");
+        header("Location: ../views/taskSalva.php");
     }
 ?>
