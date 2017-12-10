@@ -7,7 +7,9 @@
     <title>Cadastro de task</title>
 </head>
 <body>
-    <form action="">
+    <form action="../controllers/saveTask.php" method="POST">
+        <input type="hidden" name="tipoAcao" value=""/>
+        <input type="hidden" name="idTask" value=""/>
         <label for="n">Nome da task: </label>
         <input type="text" id="n" name="nome"/><br/>
         <label for="d">Descrição: </label>
