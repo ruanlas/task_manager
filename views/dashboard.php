@@ -7,7 +7,7 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <a href="#">Criar Task</a>
-    <a href="#">Visalizar Tasks</a>
+    <a href="writeTask.php">Criar Task</a>
+    <a href="listTask.php">Visalizar Tasks</a>
 </body>
 </html>

@@ -1,3 +1,11 @@
+<?php
+    require_once "../entity/Task.php";
+    require_once "../database/connectDatabase.php";
+    require_once "../database/queryesDatabase.php";
+
+    $objQuery = new QueryDataBase();
+    $listaAllTasks = $objQuery->selectTasks();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +15,7 @@
     <title>Listar Tasks</title>
 </head>
 <body>
+    <a href="dashboard.php">Voltar</a>
     <table>
         <thead>
             <tr>
@@ -25,7 +34,33 @@
             </tr>
         </thead>
         <tbody>
-            
+            <?php
+                if(is_null($listaAllTasks)){
+                    echo "<tr> Não existem tasks cadastradas</tr>";
+                }else{
+                    foreach($listaAllTasks as $task){
+            ?>
+                    <tr>
+                        <td>
+                            <?= $task->getNome() ?>
+                        </td>
+                        <td>
+                            <?= $task->getDescricao() ?>
+                        </td>
+                        <td>
+                            <form action="confirmDeleteTask.php" method="post">
+                                <input type="hidden" name="id" value="<?= $task->getId() ?>"/>
+                                <input type="submit" value="Excluir"/>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="writeTask.php?id=<?= $task->getId() ?>">Editar</a>
+                        </td>
+                    </tr>
+            <?php
+                    }
+                }
+            ?>
         </tbody>
     </table>
 </body>

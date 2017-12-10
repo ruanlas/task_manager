@@ -3,20 +3,32 @@
     require_once "../database/connectDatabase.php";
     require_once "../database/queryesDatabase.php";
 
-    $tipoAcao = $_POST['tipoAcao'];
+    $edicao = isset($_POST['idTask']) ? true : false;
+    
     $idTask = $_POST['idTask'];
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $arquivo = $_POST['arquivo'];
 
+    $objQuery = new QueryDataBase();
     $task = new Task();
 
-    $task->setNome($nome);
-    $task->setDescricao($descricao);
-    $task->setArquivo($arquivo);
+    if($edicao){
+        $task->setId($idTask);
+        $task->setNome($nome);
+        $task->setDescricao($descricao);
+        $task->setArquivo($arquivo);
 
-    $objQuery = new QueryDataBase();
-    $objQuery->insertTask($task);
+        $objQuery->updateTask($task);
+        //incluir mensagem informando o sucesso
+        header("Location: ../views/listTask.php");
+    }else{
+        $task->setNome($nome);
+        $task->setDescricao($descricao);
+        $task->setArquivo($arquivo);
 
-    header("Location: ../views/writeTask.php");
+        $objQuery->insertTask($task);
+        //mandar para um controle perguntando se deseja inserir mais e informar que foi salvo.....
+        header("Location: ../views/dashboard.php");
+    }
 ?>
