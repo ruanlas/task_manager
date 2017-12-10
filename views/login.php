@@ -26,14 +26,14 @@
         <form action="../controllers/processLogin.php" method="post">
             <div class="form-group">
                 <label for="e">Email: </label>
-                <input type="text" class="form-control" id="e" name="emailUsuario"/>
+                <input type="email" class="form-control" id="e" name="emailUsuario"/>
             </div>
             <div class="form-group">
                 <label for="p">Senha: </label>
                 <input type="password" class="form-control" id="p" name="senhaUsuario"/>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-default" value="Entrar"/>
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Entrar"/>
             </div>
         </form>
         <a href="newUser.php">Novo Usuário</a>
