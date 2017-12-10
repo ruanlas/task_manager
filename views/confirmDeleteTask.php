@@ -14,41 +14,53 @@
     $user = $objQuery->selectOneUser($idUser);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../libs/css/reset.css"/>
+    <link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css"/>
     <title><?= ($edicao) ? "Edição" : "Criação" ;?> de task</title>
 </head>
 <body>
-    <form action="../controllers/deleteTask.php" method="POST">
-        <?php
-            if(isset($_POST['id'])){
-                $idTask = $_POST['id'];
-                
-                $task = $objQuery->selectOneTask($idTask);
-                
-                $nome = $task->getNome();
-                $descricao = $task->getDescricao();
-                $arquivo = $task->getArquivo();
-                
-        ?>
-            <input type="hidden" name="idTask" value="<?= $idTask ?>"/>
-            <label for="n">Nome da task: </label>
-            <input type="text" id="n" name="nome" value="<?= $nome ?>" disabled/><br/>
-            <label for="d">Descrição: </label>
-            <textarea rows="10" cols="30" type="text" id="d" name="descricao" disabled><?= $descricao ?></textarea><br/>
-            <label for="a">Envie um arquivo anexo: </label>
-            <input type="file" id="a" name="arquivo" value="<?= $arquivo ?>" disabled/><br/>
-            <p>Deseja excluir esta task?</p>
-            <input type="submit" value="Excluir"/>
-        <?php
-            }else{
-                echo "<span>Selecione uma task para excluir</span>";
-            }
-        ?>
-        <a href="listTask.php">Voltar</a>
-    </form>
+    <h1 class="text-center">Task Manager</h1>
+    <div class="container">
+        <form action="../controllers/deleteTask.php" method="POST">
+            <?php
+                if(isset($_POST['id'])){
+                    $idTask = $_POST['id'];
+                    
+                    $task = $objQuery->selectOneTask($idTask);
+                    
+                    $nome = $task->getNome();
+                    $descricao = $task->getDescricao();
+                    $arquivo = $task->getArquivo();
+                    
+            ?>
+                <input type="hidden" name="idTask" value="<?= $idTask ?>"/>
+                <div class="form-group">
+                    <label for="n">Nome da task: </label>
+                    <input type="text" class="form-control" id="n" name="nome" value="<?= $nome ?>" disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="d">Descrição: </label>
+                    <textarea id="d" class="form-control" name="descricao" disabled><?= $descricao ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="a">Envie um arquivo anexo: </label>
+                    <input type="file" class="form-control" id="a" name="arquivo" value="<?= $arquivo ?>" disabled/>
+                </div>
+                <br/>
+                <p>Deseja excluir esta task?</p>
+                <input type="submit" class="btn btn-danger" value="Excluir"/>
+            <?php
+                }else{
+                    echo "<span>Selecione uma task para excluir </span>";
+                }
+            ?>
+            <a href="listTask.php" class="btn btn-defaut">Voltar</a>
+        </form>
+    </div>
 </body>
 </html>
