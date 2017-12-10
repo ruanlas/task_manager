@@ -1,9 +1,9 @@
 CREATE DATABASE task_manager
 
 CREATE TABLE task_manager.users (
-	id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
 	nome varchar(200) NULL,
-	email varchar(200) NOT NULL,
+	email varchar(200) NOT NULL UNIQUE,
 	userpassword varchar(250) NOT NULL
 )
 ENGINE=InnoDB
