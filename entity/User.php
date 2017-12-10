@@ -3,6 +3,7 @@
         private $id;
         private $nome;
         private $email;
+        private $senha;
         private $dataNascimento;
 
         public function setId($id){
@@ -16,6 +17,12 @@
         }
         public function setDataNascimento($dataNascimento){
             $this->dataNascimento = $dataNascimento;
+        }
+        public function setSenha($senha){
+            $this->senha = $senha;
+        }
+        public function getSenha(){
+            return $this->senha;
         }
         public function getId(){
             return $this->id;

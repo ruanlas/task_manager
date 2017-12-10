@@ -3,6 +3,12 @@
     require_once "../database/connectDatabase.php";
     require_once "../database/queryesDatabase.php";
 
+    session_start();
+    if( !isset($_SESSION['userId']) ){
+        header("Location: ../views/login.php");
+    }
+    $idUser = $_SESSION['userId'];
+
     $edicao = isset($_POST['idTask']) ? true : false;
     
     $idTask = $_POST['idTask'];
@@ -26,6 +32,7 @@
         $task->setNome($nome);
         $task->setDescricao($descricao);
         $task->setArquivo($arquivo);
+        $task->setUserId($idUser);
 
         $objQuery->insertTask($task);
         //mandar para um controle perguntando se deseja inserir mais e informar que foi salvo.....
