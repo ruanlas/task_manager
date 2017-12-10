@@ -6,6 +6,7 @@
 
     session_start();
     if( !isset($_SESSION['userId']) ){
+        http_response_code(301);
         header("Location: ../views/login.php");
     }
 
@@ -49,7 +50,11 @@
             <tbody>
                 <?php
                     if(is_null($listaAllTasks)){
-                        echo "<tr> Não existem tasks cadastradas</tr>";
+                ?>
+                        <tr>
+                            <td class="text-center" colspan="4">Não existem tasks cadastradas</td>
+                        </tr>
+                <?php
                     }else{
                         foreach($listaAllTasks as $task){
                 ?>

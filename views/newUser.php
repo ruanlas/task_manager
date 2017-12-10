@@ -23,17 +23,15 @@
             </div>
             <div class="form-group">
                 <label for="p">Senha: </label>
-                <input type="text" class="form-control" id="p" name="senhaUsr" required/>
+                <input type="password" class="form-control" id="p" name="senhaUsr" required/>
             </div>
             <div class="form-group">
                 <label for="cp">Confirmar senha: </label>
-                <input type="text" class="form-control" id="cp" name="confSenhaUsr" required/>
+                <input type="password" class="form-control" id="cp" name="confSenhaUsr" required/>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Cadastrar"/>
             </div>
-            <!-- <label for="d">Data Nascimento: </label>
-            <input type="text" id="d" name="dtNascimentoUsr"/><br/> -->
         </form>
         <a href="login.php" class="btn btn-defaut">Voltar</a>
     </div>

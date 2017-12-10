@@ -1,4 +1,5 @@
 <?php
+    require_once "../entity/Task.php";
     require_once "../entity/User.php";
     require_once "../database/connectDatabase.php";
     require_once "../database/queryesDatabase.php";
@@ -6,13 +7,9 @@
     session_start();
     if( !isset($_SESSION['userId']) ){
         http_response_code(301);
-        header("Location: login.php");
+        header("Location: ../views/login.php");
     }
 
-    $idUser = $_SESSION['userId'];
-
-    $objQuery = new QueryDataBase();
-    $user = $objQuery->selectOneUser($idUser);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,20 +19,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../libs/css/reset.css"/>
     <link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css"/>
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="../libs/css/estilos.css"/>
+    <title>Task salva</title>
 </head>
 <body>
     <h1 class="text-center">Task Manager</h1>
     <div class="container">
-        <form class="text-right" method="POST">
-            <h4>Bem vindo <?= $user->getNome() ?></h4>
-            <input type="submit" class="btn btn-default" formaction="../controllers/logoutUser.php" value="Logout"/>
-        </form>
-        <br/>
-        <div class="text-center">
-            <a href="writeTask.php" class="btn btn-primary btn-lg btn-block">Criar Task</a>
-            <a href="listTask.php" class="btn btn-primary btn-lg btn-block">Visalizar Tasks</a>
-        </div>
+        <p class="sucesso ">A task foi salva com sucesso!!</p>
+        <?php
+            if(isset($_GET['edit'])){
+        ?>
+            <a href="listTask.php" class="btn btn-primary">Voltar para a lista de tasks</a>
+        <?php
+            }else{
+        ?>
+            <a href="writeTask.php" class="btn btn-primary">Cadastrar mais task</a>
+            <a href="dashboard.php" class="btn btn-primary">Voltar ao Dashboard</a>
+        <?php
+            }
+        ?>
     </div>
 </body>
 </html>

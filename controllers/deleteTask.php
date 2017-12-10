@@ -8,5 +8,6 @@
     $objQuery = new QueryDataBase();
     $objQuery->deleteTask($idTask);
     
+    http_response_code(301);
     header("Location: ../views/listTask.php");
 ?>
